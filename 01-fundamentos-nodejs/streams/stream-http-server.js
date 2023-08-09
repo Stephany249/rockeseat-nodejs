@@ -1,5 +1,5 @@
-import http from 'node:http';
-import { Transform } from 'node:stream';
+import http from 'http';
+import { Transform } from 'stream';
 
 class InverseNumberStream extends Transform {
   _transform(chunk, encoding, callback) {
