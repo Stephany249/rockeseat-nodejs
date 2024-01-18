@@ -1,7 +1,12 @@
+# Dependecies
 node_modules
-db.json
-.yarn
 
-db/app.db
+# Database
+db/*.db
+
+# Environment 
 .env
 .env.test
+
+# Build
+build
