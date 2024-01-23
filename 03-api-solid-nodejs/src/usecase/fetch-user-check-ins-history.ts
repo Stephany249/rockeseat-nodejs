@@ -1,4 +1,3 @@
-// fetch-User-check-ins-history.ts
 import { CheckIn } from '@prisma/client'
 import { CheckInsRepository } from '@/repositories/check-ins-repository'
 
