@@ -30,6 +30,7 @@ describe('Create Gym Use Case', () => {
 
     const { gyms } = await searchGymsGymUseCase.execute({
       query: 'Typescript',
+      page: 1,
     })
 
     expect(gyms).toHaveLength(1)
