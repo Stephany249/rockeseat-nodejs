@@ -3,7 +3,7 @@ import type { Gym } from '@prisma/client'
 
 interface SearchGymsUseCaseRequest {
   query: string
-  page?: number
+  page: number
 }
 
 interface SearchGymsUseCaseResponse {
