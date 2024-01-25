@@ -2,7 +2,7 @@ import { OrgsRepository } from '@/repositories/orgs-repository'
 import { Org } from '@prisma/client'
 import { hash } from 'bcryptjs'
 import { OrgEmailAlreadyExistsError } from './errors/org-email-already-exists-error'
-import { PasswordsDoNotMatch } from './errors/password-do-not-match-error'
+import { PasswordsDoNotMatchError } from './errors/password-do-not-match-error'
 
 interface OrgUseCaseRequest {
   name: string
@@ -19,7 +19,7 @@ interface OrgUseCaseResponse {
 }
 
 export class OrgUseCase {
-  constructor(private orgsRepository: OrgsRepository) { }
+  constructor(private orgsRepository: OrgsRepository) {}
 
   async execute({
     name,
@@ -37,7 +37,7 @@ export class OrgUseCase {
     }
 
     if (password !== passwordConfirm) {
-      throw new PasswordsDoNotMatch()
+      throw new PasswordsDoNotMatchError()
     }
 
     const passwordHash = await hash(password, 6)
