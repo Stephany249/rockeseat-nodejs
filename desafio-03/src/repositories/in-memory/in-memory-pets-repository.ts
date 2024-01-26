@@ -25,4 +25,8 @@ export class InMemoryPetsRepository implements PetsRepository {
 
     return pet
   }
+
+  async findById(petId: string) {
+    return this.items[0]
+  }
 }

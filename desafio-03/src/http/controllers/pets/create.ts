@@ -57,8 +57,9 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 
     if (err instanceof MinimumOneAdoptionRequirementError || err instanceof MinimumOneImageOfPetError) {
       return reply.status(400).send({ message: err.message })
-
     }
+
+    throw err
   }
 
 
