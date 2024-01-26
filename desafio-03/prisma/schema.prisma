@@ -10,6 +10,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PetAge {
+  YOUNG
+  TEEN
+  ADULT
+}
+
+enum PetEnergyLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum PetSize {
+  SMALL
+  MEDIUM
+  BIG
+}
+
+enum PetIndependenceLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum PetSpaceNeed {
+  SMALL
+  MEDIUM
+  BIG
+}
+
 model Org {
   id       String @id @default(uuid())
   name     String
@@ -18,6 +48,42 @@ model Org {
   address  String
   whatsapp String
   password String
+  Pet      Pet[]
 
   @@map("orgs")
+}
+
+model Pet {
+  id                   String                 @id @default(uuid())
+  name                 String
+  description          String
+  age                  PetAge
+  size                 PetSize
+  energy               PetEnergyLevel
+  independence         PetIndependenceLevel
+  space                PetSpaceNeed
+  city                 String
+  photo                String
+  orgId                String
+  org                  Org                    @relation(fields: [orgId], references: [id])
+  PetGallery           PetGallery[]
+  AdoptionRequirements AdoptionRequirements[]
+
+  @@map("pets")
+}
+
+model PetGallery {
+  id    String @id @default(uuid())
+  image String
+  pet   Pet    @relation(fields: [petId], references: [id])
+  petId String
+
+  @@map("pet_gallery")
+}
+
+model AdoptionRequirements {
+  id    String @id @default(uuid())
+  title String
+  pet   Pet    @relation(fields: [petId], references: [id])
+  petId String
 }

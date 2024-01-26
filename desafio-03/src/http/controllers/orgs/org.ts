@@ -1,5 +1,5 @@
 import { OrgEmailAlreadyExistsError } from '@/usecase/errors/org-email-already-exists-error'
-import { PasswordsDoNotMatch } from '@/usecase/errors/password-do-not-match-error'
+import { PasswordsDoNotMatchError } from '@/usecase/errors/password-do-not-match-error'
 import { makeOrgUseCase } from '@/usecase/factories/make-org-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -35,7 +35,7 @@ export async function org(request: FastifyRequest, reply: FastifyReply) {
       return reply.status(409).send({ message: err.message })
     }
 
-    if (err instanceof PasswordsDoNotMatch) {
+    if (err instanceof PasswordsDoNotMatchError) {
       return reply.status(400).send({ message: err.message })
     }
 
