@@ -66,7 +66,7 @@ export class CreatePetUseCase {
     const parsedRequirement = JSON.parse(adoptionRequirements)
 
 
-    if (adoptionRequirements.length <= 0) {
+    if (parsedRequirement.length <= 0) {
       throw new MinimumOneAdoptionRequirementError()
     }
 
