@@ -1,6 +1,7 @@
 import { Pet, Prisma } from "@prisma/client";
 import { PetsRepository } from "../pets-repository";
 import { randomUUID } from "crypto";
+import { QueryParamsProps } from "@/http/controllers/pets/list-pets";
 
 export class InMemoryPetsRepository implements PetsRepository {
   public items: Pet[] = []
@@ -27,6 +28,19 @@ export class InMemoryPetsRepository implements PetsRepository {
   }
 
   async findById(petId: string) {
-    return this.items[0]
+    const pet = this.items.find(pet => pet.id === petId)
+
+    if (!pet) {
+      return null
+    }
+
+    return pet
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async findMany(city: string, query: QueryParamsProps) {
+    const pets = this.items.filter(pet => pet.city === city)
+
+    return pets
   }
 }

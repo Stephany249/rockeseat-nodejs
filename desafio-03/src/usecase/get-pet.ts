@@ -22,11 +22,11 @@ export class GetPetUseCase {
       throw new ResourceNotFoundError()
     }
 
-    const petGallery = pet.PetGallery.map((gallery) => ({
+    const petGallery = pet.PetGallery ? pet.PetGallery.map((gallery) => ({
       ...gallery,
       image: undefined,
       image_url: `${process.env.APP_URL}/images/${gallery.image}`,
-    }))
+    })) : pet.PetGallery
 
     return {
       pet: {

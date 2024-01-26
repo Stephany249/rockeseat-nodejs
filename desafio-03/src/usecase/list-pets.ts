@@ -19,7 +19,6 @@ export class ListPetsUseCase {
     city,
     query
   }: ListPetsUseCaseRequest): Promise<ListPetsUseCaseResponse> {
-
     const pets = await this.petsRepository.findMany(
       city,
       query,
