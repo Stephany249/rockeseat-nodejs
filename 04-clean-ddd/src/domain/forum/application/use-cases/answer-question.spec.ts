@@ -21,6 +21,3 @@ describe('Create Answer', () => {
     expect(inMemoryAnswersRepository.answers[0].id).toEqual(answer.id)
   })
 })
-
-
-
