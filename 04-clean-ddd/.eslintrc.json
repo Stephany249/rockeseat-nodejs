@@ -6,7 +6,8 @@
   "rules": {
     "no-useless-constructor": "off",
     "no-new": "off",
-    "prettier/prettier": "off"
+    "prettier/prettier": "off",
+    "@typescript-eslint/no-empty-object-type": "off"
   },
   "env": {
     "vitest-globals/env": true
