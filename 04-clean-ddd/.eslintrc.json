@@ -7,7 +7,15 @@
     "no-useless-constructor": "off",
     "no-new": "off",
     "prettier/prettier": "off",
-    "@typescript-eslint/no-empty-object-type": "off"
+    "@typescript-eslint/no-empty-object-type": "off",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
   },
   "env": {
     "vitest-globals/env": true
