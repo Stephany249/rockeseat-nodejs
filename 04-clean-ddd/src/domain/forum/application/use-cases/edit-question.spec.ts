@@ -14,9 +14,12 @@ describe('Edit Question', () => {
   })
 
   it('should be able to edit a question', async () => {
-    const newQuestion = makeQuestion({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('question-1'))
+    const newQuestion = makeQuestion(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('question-1'),
+    )
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
@@ -33,11 +36,13 @@ describe('Edit Question', () => {
     })
   })
 
-
   it('should not be able to edit a question from another user', async () => {
-    const newQuestion = makeQuestion({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('question-1'))
+    const newQuestion = makeQuestion(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('question-1'),
+    )
 
     await inMemoryQuestionsRepository.create(newQuestion)
 

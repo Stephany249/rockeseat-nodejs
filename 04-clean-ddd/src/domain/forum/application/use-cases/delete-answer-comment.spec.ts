@@ -14,9 +14,12 @@ describe('Delete Answer Comment', () => {
   })
 
   it('should be able to delete a answer comment', async () => {
-    const newAnswer = makeAnswerComment({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('answer-1'))
+    const newAnswer = makeAnswerComment(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('answer-1'),
+    )
 
     await inMemoryAnswerCommentsRepository.create(newAnswer)
 
@@ -28,11 +31,13 @@ describe('Delete Answer Comment', () => {
     expect(inMemoryAnswerCommentsRepository.answerComments).toHaveLength(0)
   })
 
-
   it('should not be able to delete another user answer comment ', async () => {
-    const newAnswer = makeAnswerComment({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('answer-1'))
+    const newAnswer = makeAnswerComment(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('answer-1'),
+    )
 
     await inMemoryAnswerCommentsRepository.create(newAnswer)
 

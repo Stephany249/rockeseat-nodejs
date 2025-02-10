@@ -14,9 +14,12 @@ describe('Delete Answer', () => {
   })
 
   it('should be able to delete a answer', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 
@@ -28,11 +31,13 @@ describe('Delete Answer', () => {
     expect(inMemoryAnswersRepository.answers).toHaveLength(0)
   })
 
-
   it('should not be able to delete a answer from another user', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 

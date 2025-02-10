@@ -16,7 +16,7 @@ describe('Choose Question Best Answer', () => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository()
     sut = new ChooseQuestionBestAnswerUseCase(
       inMemoryQuestionsRepository,
-      inMemoryAnswersRepository
+      inMemoryAnswersRepository,
     )
   })
 
@@ -35,9 +35,10 @@ describe('Choose Question Best Answer', () => {
       answerId: newAnswer.id.toValue(),
     })
 
-    expect(inMemoryQuestionsRepository.questions[0].bestAnswerId).toEqual(newAnswer.id)
+    expect(inMemoryQuestionsRepository.questions[0].bestAnswerId).toEqual(
+      newAnswer.id,
+    )
   })
-
 
   it('should not be able to choose another user question best answer', async () => {
     const newQuestion = makeQuestion({})
@@ -56,6 +57,5 @@ describe('Choose Question Best Answer', () => {
 
     expect(result.isLeft()).toBeTruthy()
     expect(result.value).toBeInstanceOf(NotAllowedError)
-
   })
 })

@@ -14,9 +14,12 @@ describe('Delete Question', () => {
   })
 
   it('should be able to delete a question', async () => {
-    const newQuestion = makeQuestion({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('question-1'))
+    const newQuestion = makeQuestion(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('question-1'),
+    )
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
@@ -28,11 +31,13 @@ describe('Delete Question', () => {
     expect(inMemoryQuestionsRepository.questions).toHaveLength(0)
   })
 
-
   it('should not be able to delete a question from another user', async () => {
-    const newQuestion = makeQuestion({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('question-1'))
+    const newQuestion = makeQuestion(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('question-1'),
+    )
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
@@ -40,7 +45,6 @@ describe('Delete Question', () => {
       authorId: 'any',
       questionId: 'question-1',
     })
-
 
     expect(result.isLeft()).toBeTruthy()
     expect(result.value).toBeInstanceOf(NotAllowedError)

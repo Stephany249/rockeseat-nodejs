@@ -17,8 +17,9 @@ describe('Create Answer', () => {
       content: 'Nova resposta',
     })
 
-
     expect(result.isRight()).toBeTruthy()
-    expect(inMemoryAnswersRepository.answers[0].id).toEqual(result.value?.answer.id)
+    expect(inMemoryAnswersRepository.answers[0].id).toEqual(
+      result.value?.answer.id,
+    )
   })
 })

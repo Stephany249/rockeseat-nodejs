@@ -8,18 +8,20 @@ interface DeleteQuestionCommentUseCaseRequest {
   questionId: string
 }
 
-type DeleteQuestionCommentUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, {}>
+type DeleteQuestionCommentUseCaseResponse = Either<
+  ResourceNotFoundError | NotAllowedError,
+  {}
+>
 
 export class DeleteQuestionCommentUseCase {
-  constructor(
-    private questionCommentsRepository: QuestionCommentsRepository,
-  ) { }
+  constructor(private questionCommentsRepository: QuestionCommentsRepository) {}
 
   async execute({
     authorId,
     questionId,
   }: DeleteQuestionCommentUseCaseRequest): Promise<DeleteQuestionCommentUseCaseResponse> {
-    const questionComment = await this.questionCommentsRepository.findById(questionId)
+    const questionComment =
+      await this.questionCommentsRepository.findById(questionId)
 
     if (!questionComment) {
       return left(new ResourceNotFoundError())
@@ -28,7 +30,6 @@ export class DeleteQuestionCommentUseCase {
     if (questionComment.authorId.toString() !== authorId) {
       return left(new NotAllowedError())
     }
-
 
     await this.questionCommentsRepository.delete(questionComment)
 

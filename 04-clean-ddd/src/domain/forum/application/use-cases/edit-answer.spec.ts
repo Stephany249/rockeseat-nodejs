@@ -14,9 +14,12 @@ describe('Edit Answer', () => {
   })
 
   it('should be able to edit a answer', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 
@@ -31,11 +34,13 @@ describe('Edit Answer', () => {
     })
   })
 
-
   it('should not be able to edit a answer from another user', async () => {
-    const newAnswer = makeAnswer({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('answer-1'))
+    const newAnswer = makeAnswer(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('answer-1'),
+    )
 
     await inMemoryAnswersRepository.create(newAnswer)
 

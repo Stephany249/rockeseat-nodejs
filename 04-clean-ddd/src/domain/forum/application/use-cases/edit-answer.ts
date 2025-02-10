@@ -10,17 +10,20 @@ interface EditAnswerUseCaseRequest {
   content: string
 }
 
-type EditAnswerUseCaseResponse = Either<ResourceNotFoundError | NotAllowedError, {
-  answer: Answer
-}>
+type EditAnswerUseCaseResponse = Either<
+  ResourceNotFoundError | NotAllowedError,
+  {
+    answer: Answer
+  }
+>
 
 export class EditAnswerUseCase {
-  constructor(private answersRepository: AnswersRepository) { }
+  constructor(private answersRepository: AnswersRepository) {}
 
   async execute({
     authorId,
     answerId,
-    content
+    content,
   }: EditAnswerUseCaseRequest): Promise<EditAnswerUseCaseResponse> {
     const answer = await this.answersRepository.findById(answerId)
 
@@ -36,7 +39,7 @@ export class EditAnswerUseCase {
     await this.answersRepository.save(answer)
 
     return right({
-      answer
+      answer,
     })
   }
 }

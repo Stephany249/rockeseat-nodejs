@@ -9,14 +9,18 @@ let sut: DeleteQuestionCommentUseCase
 
 describe('Delete Question Comment', () => {
   beforeEach(() => {
-    inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentsRepository()
+    inMemoryQuestionCommentsRepository =
+      new InMemoryQuestionCommentsRepository()
     sut = new DeleteQuestionCommentUseCase(inMemoryQuestionCommentsRepository)
   })
 
   it('should be able to delete a question comment', async () => {
-    const newQuestion = makeQuestionComment({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('question-1'))
+    const newQuestion = makeQuestionComment(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('question-1'),
+    )
 
     await inMemoryQuestionCommentsRepository.create(newQuestion)
 
@@ -28,11 +32,13 @@ describe('Delete Question Comment', () => {
     expect(inMemoryQuestionCommentsRepository.questionComments).toHaveLength(0)
   })
 
-
   it('should not be able to delete another user question comment ', async () => {
-    const newQuestion = makeQuestionComment({
-      authorId: new UniqueEntityID('any_id'),
-    }, new UniqueEntityID('question-1'))
+    const newQuestion = makeQuestionComment(
+      {
+        authorId: new UniqueEntityID('any_id'),
+      },
+      new UniqueEntityID('question-1'),
+    )
 
     await inMemoryQuestionCommentsRepository.create(newQuestion)
 

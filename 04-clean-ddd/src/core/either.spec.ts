@@ -15,7 +15,6 @@ test('Success result', () => {
 
   expect(result.isRight()).toBe(true)
   expect(result.isLeft()).toBe(false)
-
 })
 
 test('Error result', () => {
@@ -23,5 +22,4 @@ test('Error result', () => {
 
   expect(result.isLeft()).toBe(true)
   expect(result.isRight()).toBe(false)
-
 })

@@ -53,7 +53,6 @@ describe('watched list', () => {
     expect(list.getNewItems()).toEqual([])
   })
 
-
   it('should be able to update watched list items', () => {
     const list = new NumberWatchedList([1, 2, 3])
 
