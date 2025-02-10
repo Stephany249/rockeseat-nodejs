@@ -18,12 +18,12 @@ describe('Fetch Question Answers', () => {
     await inMemoryAnswersRepository.create(makeAnswer({ questionId: new UniqueEntityID('any_question') }))
 
 
-    const { answers } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'any_question',
       page: 1
     })
 
-    expect(answers).toHaveLength(3)
+    expect(result.value?.answers).toHaveLength(3)
   })
 
 
@@ -32,11 +32,11 @@ describe('Fetch Question Answers', () => {
       await inMemoryAnswersRepository.create(makeAnswer({ questionId: new UniqueEntityID('any_question') }))
     }
 
-    const { answers } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'any_question',
       page: 2
     })
 
-    expect(answers).toHaveLength(2)
+    expect(result.value?.answers).toHaveLength(2)
   })
 })

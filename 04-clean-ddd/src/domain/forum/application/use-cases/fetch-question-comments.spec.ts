@@ -18,12 +18,12 @@ describe('Fetch Question Comment', () => {
     await inMemoryQuestionCommentsRepository.create(makeQuestionComment({ questionId: new UniqueEntityID('any_question') }))
 
 
-    const { questionComments } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'any_question',
       page: 1
     })
 
-    expect(questionComments).toHaveLength(3)
+    expect(result.value?.questionComments).toHaveLength(3)
   })
 
 
@@ -32,11 +32,11 @@ describe('Fetch Question Comment', () => {
       await inMemoryQuestionCommentsRepository.create(makeQuestionComment({ questionId: new UniqueEntityID('any_question') }))
     }
 
-    const { questionComments } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'any_question',
       page: 2
     })
 
-    expect(questionComments).toHaveLength(2)
+    expect(result.value?.questionComments).toHaveLength(2)
   })
 })
