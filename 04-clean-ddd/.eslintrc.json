@@ -1,11 +1,17 @@
 {
   "extends": [
     "@rocketseat/eslint-config/node",
-    "plugin:vitest-globals/recommended"
+    "plugin:vitest-globals/recommended",
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "no-useless-constructor": "off",
     "no-new": "off",
+    "prettier/prettier": ["error", {
+      "endOfLine": "auto",
+      "semi": false,
+      "singleQuote": true
+    }],
     "@typescript-eslint/no-empty-object-type": "off",
     "quotes": [
       "error",

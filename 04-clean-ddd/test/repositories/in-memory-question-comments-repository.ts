@@ -2,11 +2,15 @@ import { PaginationParams } from '@/core/repositories/pagination-params'
 import { QuestionCommentsRepository } from '@/domain/forum/application/repositories/question-comments-repository'
 import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment'
 
-export class InMemoryQuestionCommentsRepository implements QuestionCommentsRepository {
+export class InMemoryQuestionCommentsRepository
+  implements QuestionCommentsRepository
+{
   public questionComments: QuestionComment[] = []
 
   async findById(id: string) {
-    const questionComment = this.questionComments.find((comment) => comment.id.toString() === id)
+    const questionComment = this.questionComments.find(
+      (comment) => comment.id.toString() === id,
+    )
 
     if (!questionComment) {
       return null
@@ -15,7 +19,10 @@ export class InMemoryQuestionCommentsRepository implements QuestionCommentsRepos
     return questionComment
   }
 
-  async findManyByQuestionId(questionId: string, { page }: PaginationParams): Promise<QuestionComment[]> {
+  async findManyByQuestionId(
+    questionId: string,
+    { page }: PaginationParams,
+  ): Promise<QuestionComment[]> {
     const questionComments = this.questionComments
       .filter((comment) => comment.questionId.toString() === questionId)
       .slice((page - 1) * 20, page * 20)
@@ -28,7 +35,9 @@ export class InMemoryQuestionCommentsRepository implements QuestionCommentsRepos
   }
 
   async delete(questionComment: QuestionComment) {
-    const index = this.questionComments.findIndex((qc) => qc.id === questionComment.id)
+    const index = this.questionComments.findIndex(
+      (qc) => qc.id === questionComment.id,
+    )
 
     this.questionComments.splice(index, 1)
   }

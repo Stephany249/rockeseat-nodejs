@@ -2,11 +2,15 @@ import { PaginationParams } from '@/core/repositories/pagination-params'
 import { AnswerCommentsRepository } from '@/domain/forum/application/repositories/answer-comments-repository'
 import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment'
 
-export class InMemoryAnswerCommentsRepository implements AnswerCommentsRepository {
+export class InMemoryAnswerCommentsRepository
+  implements AnswerCommentsRepository
+{
   public answerComments: AnswerComment[] = []
 
   async findById(id: string) {
-    const answerComment = this.answerComments.find((comment) => comment.id.toString() === id)
+    const answerComment = this.answerComments.find(
+      (comment) => comment.id.toString() === id,
+    )
 
     if (!answerComment) {
       return null
@@ -27,7 +31,9 @@ export class InMemoryAnswerCommentsRepository implements AnswerCommentsRepositor
   }
 
   async delete(answerComment: AnswerComment) {
-    const index = this.answerComments.findIndex((ac) => ac.id === answerComment.id)
+    const index = this.answerComments.findIndex(
+      (ac) => ac.id === answerComment.id,
+    )
 
     this.answerComments.splice(index, 1)
   }

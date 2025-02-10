@@ -6,7 +6,9 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   public questions: Question[] = []
 
   async findById(id: string) {
-    const question = this.questions.find((question) => question.id.toString() === id)
+    const question = this.questions.find(
+      (question) => question.id.toString() === id,
+    )
 
     if (!question) {
       return null
