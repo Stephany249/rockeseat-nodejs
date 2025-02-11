@@ -6,6 +6,7 @@ export default defineConfig(async () => {
 
   return {
     test: {
+      hookTimeout: 30000,
       include: ['**/*.e2e-spec.ts'],
       globals: true,
       root: './',
