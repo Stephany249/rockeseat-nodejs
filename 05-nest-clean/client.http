@@ -1,0 +1,18 @@
+POST http://localhost:3333/accounts
+content-type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@doe.com",
+  "password": "123456"
+}
+
+###
+
+POST http://localhost:3333/sessions
+content-type: application/json
+
+{
+  "email": "john@doe.com",
+  "password": "123456"
+}
