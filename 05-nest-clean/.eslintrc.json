@@ -2,6 +2,7 @@
   "extends": [
     "@rocketseat/eslint-config/node"
   ],
+  "plugins": ["import"],
   "rules": {
     "no-useless-constructor": "off",
     "no-new": "off",
@@ -18,6 +19,13 @@
     "semi": [
       "error",
       "never"
-    ]
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ]    
   }
 }
