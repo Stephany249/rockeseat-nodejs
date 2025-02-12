@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 
+import { PrismaService } from '../prisma.service'
 import { PaginationParams } from '@/core/repositories/paginationParams'
 import { QuestionCommentsRepository } from '@/domain/forum/application/repositories/questionCommentsRepository'
 import { QuestionComment } from '@/domain/forum/enterprise/entities/questionComment'
@@ -8,6 +9,8 @@ import { QuestionComment } from '@/domain/forum/enterprise/entities/questionComm
 export class PrismaQuestionCommentsRepository
   implements QuestionCommentsRepository
 {
+  constructor(private readonly prisma: PrismaService) {}
+
   findById(id: string): Promise<QuestionComment | null> {
     throw new Error('Method not implemented.')
   }
