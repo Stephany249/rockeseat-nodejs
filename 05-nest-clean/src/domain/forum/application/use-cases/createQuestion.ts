@@ -1,3 +1,5 @@
+import { Injectable } from '@nestjs/common'
+
 import { Question } from '../../enterprise/entities/question'
 import { QuestionAttachment } from '../../enterprise/entities/questionAttachment'
 import { QuestionAttachmentList } from '../../enterprise/entities/questionAttachmentList'
@@ -19,6 +21,7 @@ type CreateQuestionUseCaseResponse = Either<
   }
 >
 
+@Injectable()
 export class CreateQuestionUseCase {
   constructor(private questionsRepository: QuestionsRepository) {}
 
