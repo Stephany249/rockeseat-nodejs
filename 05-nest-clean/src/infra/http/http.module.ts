@@ -32,6 +32,7 @@ import { DeleteQuestionUseCase } from '@/domain/forum/application/use-cases/dele
 import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/deleteQuestionComment'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/editAnswer'
 import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/editQuestion'
+import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/fetchAnswerComments'
 import { FetchQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/fetchQuestionAnswers'
 import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetchQuestionComments'
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetchRecentQuestions'
@@ -77,6 +78,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
     CommentOnAnswerUseCase,
     DeleteAnswerCommentUseCase,
     FetchQuestionCommentsUseCase,
+    FetchAnswerCommentsUseCase,
   ],
 })
 export class HttpModule {}
