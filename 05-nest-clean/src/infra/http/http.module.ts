@@ -4,18 +4,24 @@ import { AuthenticateController } from './controllers/authenticate.controller'
 import { CreateAccountController } from './controllers/createAccount.controller'
 import { CreateQuestionController } from './controllers/createQuestion.controller'
 import { FetchRecentQuestionsController } from './controllers/fetchRecentQuestions.controller'
+import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
+import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticateStudent'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/createQuestion'
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetchRecentQuestions'
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, CryptographyModule],
   controllers: [
     CreateAccountController,
     AuthenticateController,
     CreateQuestionController,
     FetchRecentQuestionsController,
   ],
-  providers: [CreateQuestionUseCase, FetchRecentQuestionsUseCase],
+  providers: [
+    CreateQuestionUseCase,
+    FetchRecentQuestionsUseCase,
+    AuthenticateStudentUseCase,
+  ],
 })
 export class HttpModule {}
