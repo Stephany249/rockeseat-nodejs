@@ -17,6 +17,7 @@ import { DatabaseModule } from '../database/database.module'
 import { DeleteQuestionCommentController } from './controllers/deleteQuestionComment.controller'
 import { EditAnswerController } from './controllers/editAnswer.controller'
 import { FetchQuestionAnswersController } from './controllers/fetchQuestionAnswers.controller'
+import { FetchQuestionCommentsController } from './controllers/fetchQuestionComments.controller'
 import { GetQuestionBySlugController } from './controllers/getQuestionBySlug.controller'
 
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answerQuestion'
@@ -32,6 +33,7 @@ import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cas
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/editAnswer'
 import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/editQuestion'
 import { FetchQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/fetchQuestionAnswers'
+import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetchQuestionComments'
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetchRecentQuestions'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/getQuestionBySlug'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/registerStudent'
@@ -55,6 +57,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
     DeleteQuestionCommentController,
     CommentOnAnswerController,
     DeleteAnswerCommentController,
+    FetchQuestionCommentsController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -73,6 +76,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
     DeleteQuestionCommentUseCase,
     CommentOnAnswerUseCase,
     DeleteAnswerCommentUseCase,
+    FetchQuestionCommentsUseCase,
   ],
 })
 export class HttpModule {}
