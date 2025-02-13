@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common'
 import { AnswerCommentsRepository } from '../repositories/answerCommentsRepository'
 import { Either, left, right } from '@/core/either'
 import { NotAllowedError } from '@/core/errors/notAllowedError'
@@ -5,7 +6,7 @@ import { ResourceNotFoundError } from '@/core/errors/resourceNotFoundError'
 
 interface DeleteAnswerCommentUseCaseRequest {
   authorId: string
-  answerId: string
+  answerCommentId: string
 }
 
 type DeleteAnswerCommentUseCaseResponse = Either<
@@ -13,14 +14,16 @@ type DeleteAnswerCommentUseCaseResponse = Either<
   null
 >
 
+@Injectable()
 export class DeleteAnswerCommentUseCase {
   constructor(private answerCommentsRepository: AnswerCommentsRepository) {}
 
   async execute({
     authorId,
-    answerId,
+    answerCommentId,
   }: DeleteAnswerCommentUseCaseRequest): Promise<DeleteAnswerCommentUseCaseResponse> {
-    const answerComment = await this.answerCommentsRepository.findById(answerId)
+    const answerComment =
+      await this.answerCommentsRepository.findById(answerCommentId)
 
     if (!answerComment) {
       return left(new ResourceNotFoundError())
