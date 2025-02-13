@@ -6,13 +6,10 @@ import request from 'supertest'
 import { StudentFactory } from 'test/factories/makeStudent'
 import { AppModule } from '@/infra/app.module'
 import { DatabaseModule } from '@/infra/database/database.module'
-import { PrismaService } from '@/infra/database/prisma/prisma.service'
 
 describe('Authenticate (E2E)', () => {
   let app: INestApplication
   let studentFactory: StudentFactory
-
-  let prisma: PrismaService
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -22,7 +19,6 @@ describe('Authenticate (E2E)', () => {
 
     app = moduleRef.createNestApplication()
 
-    prisma = moduleRef.get(PrismaService)
     studentFactory = moduleRef.get(StudentFactory)
 
     await app.init()
