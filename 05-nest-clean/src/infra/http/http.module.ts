@@ -12,6 +12,7 @@ import { EditQuestionController } from './controllers/editQuestion.controller'
 import { FetchRecentQuestionsController } from './controllers/fetchRecentQuestions.controller'
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
+import { DeleteQuestionCommentController } from './controllers/deleteQuestionComment.controller'
 import { EditAnswerController } from './controllers/editAnswer.controller'
 import { FetchQuestionAnswersController } from './controllers/fetchQuestionAnswers.controller'
 import { GetQuestionBySlugController } from './controllers/getQuestionBySlug.controller'
@@ -23,6 +24,7 @@ import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/c
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/createQuestion'
 import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/deleteAnswer'
 import { DeleteQuestionUseCase } from '@/domain/forum/application/use-cases/deleteQuestion'
+import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/deleteQuestionComment'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/editAnswer'
 import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/editQuestion'
 import { FetchQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/fetchQuestionAnswers'
@@ -46,6 +48,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
     FetchQuestionAnswersController,
     ChooseQuestionBestAnswerController,
     CommentOnQuestionController,
+    DeleteQuestionCommentController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -61,6 +64,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
     FetchQuestionAnswersUseCase,
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
+    DeleteQuestionCommentUseCase,
   ],
 })
 export class HttpModule {}

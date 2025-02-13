@@ -26,7 +26,7 @@ describe('Delete Question Comment', () => {
 
     await sut.execute({
       authorId: 'any_id',
-      questionId: 'question-1',
+      questionCommentId: 'question-1',
     })
 
     expect(inMemoryQuestionCommentsRepository.questionComments).toHaveLength(0)
@@ -44,7 +44,7 @@ describe('Delete Question Comment', () => {
 
     const result = await sut.execute({
       authorId: 'other_id',
-      questionId: 'question-1',
+      questionCommentId: 'question-1',
     })
 
     expect(result.isLeft()).toBeTruthy()
