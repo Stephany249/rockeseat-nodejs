@@ -18,7 +18,10 @@ describe('Edit Answer', () => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository,
     )
-    sut = new EditAnswerUseCase(inMemoryAnswersRepository)
+    sut = new EditAnswerUseCase(
+      inMemoryAnswersRepository,
+      inMemoryAnswerAttachmentsRepository,
+    )
   })
 
   it('should be able to edit a answer', async () => {
@@ -35,6 +38,7 @@ describe('Edit Answer', () => {
       authorId: 'any_id',
       answerId: newAnswer.id.toValue(),
       content: 'new content',
+      attachmentsIds: ['1'],
     })
 
     expect(inMemoryAnswersRepository.answers[0]).toMatchObject({
@@ -56,6 +60,7 @@ describe('Edit Answer', () => {
       authorId: 'any',
       answerId: newAnswer.id.toValue(),
       content: 'new content',
+      attachmentsIds: ['1'],
     })
 
     expect(result.isLeft()).toBeTruthy()
