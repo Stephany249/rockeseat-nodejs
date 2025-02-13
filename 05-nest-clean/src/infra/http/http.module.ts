@@ -16,6 +16,7 @@ import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
 import { DeleteQuestionCommentController } from './controllers/deleteQuestionComment.controller'
 import { EditAnswerController } from './controllers/editAnswer.controller'
+import { FetchAnswerCommentsController } from './controllers/fetchAnswerComments.controller'
 import { FetchQuestionAnswersController } from './controllers/fetchQuestionAnswers.controller'
 import { FetchQuestionCommentsController } from './controllers/fetchQuestionComments.controller'
 import { GetQuestionBySlugController } from './controllers/getQuestionBySlug.controller'
@@ -59,6 +60,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
     CommentOnAnswerController,
     DeleteAnswerCommentController,
     FetchQuestionCommentsController,
+    FetchAnswerCommentsController,
   ],
   providers: [
     CreateQuestionUseCase,
