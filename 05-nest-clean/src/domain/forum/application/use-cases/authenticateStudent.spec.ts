@@ -1,4 +1,3 @@
-import { access } from 'fs'
 import { FakeEncrypter } from 'test/cryptography/fakeEncrypter'
 import { FakeHasher } from 'test/cryptography/fakeHasher'
 
