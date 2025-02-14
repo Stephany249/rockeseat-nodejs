@@ -22,6 +22,7 @@ import { FetchQuestionCommentsController } from './controllers/fetchQuestionComm
 import { GetQuestionBySlugController } from './controllers/getQuestionBySlug.controller'
 
 import { UploadAttachmentController } from './controllers/uploadAttachment.controller'
+import { StorageModule } from '../storage/storage.module'
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answerQuestion'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticateStudent'
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/chooseQuestionBestAnswer'
@@ -43,7 +44,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
 import { UploadAndCreateAttachmentUseCase } from '@/domain/forum/application/use-cases/uploadAndCreateAttachment'
 
 @Module({
-  imports: [DatabaseModule, CryptographyModule],
+  imports: [DatabaseModule, CryptographyModule, StorageModule],
   controllers: [
     CreateAccountController,
     AuthenticateController,
