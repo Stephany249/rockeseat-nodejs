@@ -4,6 +4,7 @@ import { PrismaService } from './prisma/prisma.service'
 import { PrismaAnswerAttachmentsRepository } from './prisma/repositories/prismaAnswerAttachmentsRepository'
 import { PrismaAnswerCommentsRepository } from './prisma/repositories/prismaAnswerCommentsRepository'
 import { PrismaAnswersRepository } from './prisma/repositories/prismaAnswersRepository'
+import { PrismaAttachmentsRepository } from './prisma/repositories/prismaAttachmentsRepository'
 import { PrismaQuestionAttachmentRepository } from './prisma/repositories/prismaQuestionAttachmentsRepository'
 import { PrismaQuestionCommentsRepository } from './prisma/repositories/prismaQuestionCommentsRepository'
 import { PrismaQuestionsRepository } from './prisma/repositories/prismaQuestionsRepository'
@@ -11,6 +12,7 @@ import { PrismaStudentsRepository } from './prisma/repositories/prismaStudentsRe
 import { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answerAttachmentsRepository'
 import { AnswerCommentsRepository } from '@/domain/forum/application/repositories/answerCommentsRepository'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answersRepository'
+import { AttachmentsRepository } from '@/domain/forum/application/repositories/attachmentsRepository'
 import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/questionAttachmentsRepository'
 import { QuestionCommentsRepository } from '@/domain/forum/application/repositories/questionCommentsRepository'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questionsRepository'
@@ -47,6 +49,10 @@ import { StudentsRepository } from '@/domain/forum/application/repositories/stud
       provide: StudentsRepository,
       useClass: PrismaStudentsRepository,
     },
+    {
+      provide: AttachmentsRepository,
+      useClass: PrismaAttachmentsRepository,
+    },
   ],
   exports: [
     PrismaService,
@@ -57,6 +63,7 @@ import { StudentsRepository } from '@/domain/forum/application/repositories/stud
     QuestionCommentsRepository,
     QuestionsRepository,
     StudentsRepository,
+    AttachmentsRepository,
   ],
 })
 export class DatabaseModule {}
