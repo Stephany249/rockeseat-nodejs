@@ -39,6 +39,7 @@ import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cas
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetchRecentQuestions'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/getQuestionBySlug'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/registerStudent'
+import { UploadAttachmentController } from './controllers/uploadAttachment.controller'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule],
@@ -61,6 +62,7 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/reg
     DeleteAnswerCommentController,
     FetchQuestionCommentsController,
     FetchAnswerCommentsController,
+    UploadAttachmentController 
   ],
   providers: [
     CreateQuestionUseCase,
