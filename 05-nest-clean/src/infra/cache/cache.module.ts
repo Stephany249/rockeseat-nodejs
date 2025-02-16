@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common'
-import { EnvModule } from '../env/env.module'
-import { EnvService } from '../env/env.service'
-import { RedisService } from '../redis/redis.service'
 import { CacheRepository } from './cacheRepository'
+import { EnvModule } from '../env/env.module'
+import { RedisService } from '../redis/redis.service'
 import { RedisCacheRepository } from '../redis/redisCacheRepository'
 
 @Module({
