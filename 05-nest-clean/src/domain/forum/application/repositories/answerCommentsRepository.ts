@@ -1,4 +1,5 @@
 import { AnswerComment } from '../../enterprise/entities/answerComment'
+import { CommentWithAuthor } from '../../enterprise/entities/value-objects/commentWithAuthor'
 import { PaginationParams } from '@/core/repositories/paginationParams'
 
 export abstract class AnswerCommentsRepository {
@@ -7,6 +8,11 @@ export abstract class AnswerCommentsRepository {
     answerId: string,
     params: PaginationParams,
   ): Promise<AnswerComment[]>
+
+  abstract findManyByAnswerIdWithAuthor(
+    answerId: string,
+    params: PaginationParams,
+  ): Promise<CommentWithAuthor[]>
 
   abstract create(answerComment: AnswerComment): Promise<void>
   abstract delete(answerComment: AnswerComment): Promise<void>
