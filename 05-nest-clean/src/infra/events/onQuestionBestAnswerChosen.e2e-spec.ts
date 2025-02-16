@@ -6,10 +6,10 @@ import { AnswerFactory } from 'test/factories/makeAnswer'
 import { QuestionFactory } from 'test/factories/makeQuestion'
 import { StudentFactory } from 'test/factories/makeStudent'
 import { waitFor } from 'test/utils/waitFor'
+import { DomainEvents } from '@/core/events/domainEvents'
 import { AppModule } from '@/infra/app.module'
 import { DatabaseModule } from '@/infra/database/database.module'
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
-import { DomainEvents } from '@/core/events/domainEvents'
 
 describe('On question best answer chosen (E2E)', () => {
   let app: INestApplication
