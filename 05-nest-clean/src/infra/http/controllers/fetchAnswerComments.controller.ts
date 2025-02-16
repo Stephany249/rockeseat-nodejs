@@ -8,7 +8,6 @@ import {
 
 import { z } from 'zod'
 import { ZodValidationPipe } from '../pipes/zodValidationPipe'
-import { CommentPresenter } from '../presenters/commentPresenter'
 import { CommentWithAuthorPresenter } from '../presenters/commentWithAuthorPresenter'
 import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/fetchAnswerComments'
 
