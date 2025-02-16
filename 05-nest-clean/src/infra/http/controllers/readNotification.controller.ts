@@ -1,4 +1,10 @@
-import { BadRequestException, Controller, HttpCode, Param, Patch } from '@nestjs/common'
+import {
+  BadRequestException,
+  Controller,
+  HttpCode,
+  Param,
+  Patch,
+} from '@nestjs/common'
 
 import { ReadNotificationUseCase } from '@/domain/notification/application/use-cases/readNotification'
 import { CurrentUser } from '@/infra/auth/currentUserDecorator'
