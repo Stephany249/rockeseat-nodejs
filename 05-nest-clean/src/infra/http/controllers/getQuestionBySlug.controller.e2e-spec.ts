@@ -3,13 +3,13 @@ import { JwtService } from '@nestjs/jwt'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 
+import { AttachmentFactory } from 'test/factories/makeAttachment'
 import { QuestionFactory } from 'test/factories/makeQuestion'
+import { QuestionAttachmentFactory } from 'test/factories/makeQuestionAttachments'
 import { StudentFactory } from 'test/factories/makeStudent'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 import { AppModule } from '@/infra/app.module'
 import { DatabaseModule } from '@/infra/database/database.module'
-import { AttachmentFactory } from 'test/factories/makeAttachment'
-import { QuestionAttachmentFactory } from 'test/factories/makeQuestionAttachments'
 
 describe('Get question by slug (E2E)', () => {
   let app: INestApplication
@@ -22,7 +22,12 @@ describe('Get question by slug (E2E)', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory, QuestionFactory, AttachmentFactory, QuestionAttachmentFactory],
+      providers: [
+        StudentFactory,
+        QuestionFactory,
+        AttachmentFactory,
+        QuestionAttachmentFactory,
+      ],
     }).compile()
 
     app = moduleRef.createNestApplication()
@@ -38,7 +43,7 @@ describe('Get question by slug (E2E)', () => {
 
   test('[GET] /questions/:slug', async () => {
     const user = await studentFactory.makePrismaStudent({
-      name: 'John Doe'
+      name: 'John Doe',
     })
 
     const accessToken = jwt.sign({ sub: user.id.toString() })

@@ -1,9 +1,11 @@
+import { Injectable } from '@nestjs/common'
 import { SendNotificationUseCase } from '../use-cases/sendNotification'
 import { DomainEvents } from '@/core/events/domainEvents'
 import { EventHandler } from '@/core/events/eventHandler'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answersRepository'
 import { QuestionBestAnswerChosenEvent } from '@/domain/forum/enterprise/events/questionBestAnswerChosenEvent'
 
+@Injectable()
 export class OnQuestionBestAnswerChosen implements EventHandler {
   constructor(
     private answerRepository: AnswersRepository,

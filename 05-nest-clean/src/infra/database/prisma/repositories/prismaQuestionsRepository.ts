@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 
+import { PrismaQuestionDetailsMapper } from '../mappers/prismaQuestionDetailsMapper'
 import { PrismaQuestionMapper } from '../mappers/prismaQuestionMapper'
 import { PrismaService } from '../prisma.service'
 import { PaginationParams } from '@/core/repositories/paginationParams'
@@ -7,7 +8,6 @@ import { QuestionAttachmentsRepository } from '@/domain/forum/application/reposi
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questionsRepository'
 import { Question } from '@/domain/forum/enterprise/entities/question'
 import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/questionDetails'
-import { PrismaQuestionDetailsMapper } from '../mappers/prismaQuestionDetailsMapper'
 
 @Injectable()
 export class PrismaQuestionsRepository implements QuestionsRepository {
@@ -49,7 +49,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
     if (!question) {
       return null
     }
-    
+
     return PrismaQuestionDetailsMapper.toDomain(question)
   }
 
