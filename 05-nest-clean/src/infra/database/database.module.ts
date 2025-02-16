@@ -5,6 +5,7 @@ import { PrismaAnswerAttachmentsRepository } from './prisma/repositories/prismaA
 import { PrismaAnswerCommentsRepository } from './prisma/repositories/prismaAnswerCommentsRepository'
 import { PrismaAnswersRepository } from './prisma/repositories/prismaAnswersRepository'
 import { PrismaAttachmentsRepository } from './prisma/repositories/prismaAttachmentsRepository'
+import { PrismaNotificationsRepository } from './prisma/repositories/prismaNotificationRepository'
 import { PrismaQuestionAttachmentRepository } from './prisma/repositories/prismaQuestionAttachmentsRepository'
 import { PrismaQuestionCommentsRepository } from './prisma/repositories/prismaQuestionCommentsRepository'
 import { PrismaQuestionsRepository } from './prisma/repositories/prismaQuestionsRepository'
@@ -18,7 +19,6 @@ import { QuestionCommentsRepository } from '@/domain/forum/application/repositor
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questionsRepository'
 import { StudentsRepository } from '@/domain/forum/application/repositories/studentsRepository'
 import { NotificationsRepository } from '@/domain/notification/application/repositories/notificationsRepository'
-import { PrismaNotificationsRepository } from './prisma/repositories/prismaNotificationRepository'
 
 @Module({
   providers: [
@@ -70,7 +70,7 @@ import { PrismaNotificationsRepository } from './prisma/repositories/prismaNotif
     QuestionsRepository,
     StudentsRepository,
     AttachmentsRepository,
-    NotificationsRepository
+    NotificationsRepository,
   ],
 })
 export class DatabaseModule {}
