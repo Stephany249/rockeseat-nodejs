@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 
 import { PrismaService } from './prisma/prisma.service'
+import { CacheModule } from '../cache/cache.module'
 import { PrismaAnswerAttachmentsRepository } from './prisma/repositories/prismaAnswerAttachmentsRepository'
 import { PrismaAnswerCommentsRepository } from './prisma/repositories/prismaAnswerCommentsRepository'
 import { PrismaAnswersRepository } from './prisma/repositories/prismaAnswersRepository'
@@ -21,6 +22,7 @@ import { StudentsRepository } from '@/domain/forum/application/repositories/stud
 import { NotificationsRepository } from '@/domain/notification/application/repositories/notificationsRepository'
 
 @Module({
+  imports: [CacheModule],
   providers: [
     PrismaService,
     {
