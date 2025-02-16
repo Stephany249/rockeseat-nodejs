@@ -2,9 +2,11 @@ import { makeAnswer } from 'test/factories/makeAnswer'
 import { makeQuestion } from 'test/factories/makeQuestion'
 import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/inMemoryAnswerAttachmentsRepository'
 import { InMemoryAnswersRepository } from 'test/repositories/inMemoryAnswersRepository'
+import { InMemoryAttachmentsRepository } from 'test/repositories/inMemoryAttachmentsRepository'
 import { InMemoryNotificationsRepository } from 'test/repositories/inMemoryNotificationsRepository'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/inMemoryQuestionAttachmentsRepository'
 import { InMemoryQuestionsRepository } from 'test/repositories/inMemoryQuestionsRepository'
+import { InMemoryStudentsRepository } from 'test/repositories/inMemoryStudentsRepository'
 import { waitFor } from 'test/utils/waitFor'
 import { MockInstance } from 'vitest'
 import {
@@ -14,6 +16,8 @@ import {
 } from '../use-cases/sendNotification'
 import { OnAnswerCreated } from '@/domain/notification/application/subscribers/onAnswerCreated'
 
+let inMemoryStudentsRepository: InMemoryStudentsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 let inMemoryNotificationsRepository: InMemoryNotificationsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
@@ -30,11 +34,15 @@ let sendNotificationExecuteSpy: MockInstance<
 
 describe('On Answer Created', () => {
   beforeEach(() => {
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
     inMemoryNotificationsRepository = new InMemoryNotificationsRepository()
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     inMemoryAnswerAttachmentsRepository =
       new InMemoryAnswerAttachmentsRepository()

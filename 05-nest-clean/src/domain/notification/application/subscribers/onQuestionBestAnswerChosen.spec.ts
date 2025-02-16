@@ -2,9 +2,11 @@ import { makeAnswer } from 'test/factories/makeAnswer'
 import { makeQuestion } from 'test/factories/makeQuestion'
 import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/inMemoryAnswerAttachmentsRepository'
 import { InMemoryAnswersRepository } from 'test/repositories/inMemoryAnswersRepository'
+import { InMemoryAttachmentsRepository } from 'test/repositories/inMemoryAttachmentsRepository'
 import { InMemoryNotificationsRepository } from 'test/repositories/inMemoryNotificationsRepository'
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/inMemoryQuestionAttachmentsRepository'
 import { InMemoryQuestionsRepository } from 'test/repositories/inMemoryQuestionsRepository'
+import { InMemoryStudentsRepository } from 'test/repositories/inMemoryStudentsRepository'
 import { waitFor } from 'test/utils/waitFor'
 import { MockInstance } from 'vitest'
 import {
@@ -14,6 +16,8 @@ import {
 } from '../use-cases/sendNotification'
 import { OnQuestionBestAnswerChosen } from '@/domain/notification/application/subscribers/onQuestionBestAnswerChosen'
 
+let inMemoryStudentsRepository: InMemoryStudentsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
@@ -29,10 +33,14 @@ let sendNotificationExecuteSpy: MockInstance<
 >
 describe('On Question Best Answer Chosen', () => {
   beforeEach(() => {
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
     )
     inMemoryAnswerAttachmentsRepository =
       new InMemoryAnswerAttachmentsRepository()
