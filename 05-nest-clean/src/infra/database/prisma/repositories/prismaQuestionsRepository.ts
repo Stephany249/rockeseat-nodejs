@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common'
 import { PrismaQuestionDetailsMapper } from '../mappers/prismaQuestionDetailsMapper'
 import { PrismaQuestionMapper } from '../mappers/prismaQuestionMapper'
 import { PrismaService } from '../prisma.service'
+import { DomainEvents } from '@/core/events/domainEvents'
 import { PaginationParams } from '@/core/repositories/paginationParams'
 import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/questionAttachmentsRepository'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questionsRepository'
@@ -75,6 +76,8 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
     await this.questionAttachmentsRepository.createMany(
       question.attachments.getItems(),
     )
+
+    DomainEvents.dispatchEventsForAggregate(question.id)
   }
 
   async save(question: Question): Promise<void> {
@@ -94,6 +97,8 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
         question.attachments.getRemovedItems(),
       ),
     ])
+
+    DomainEvents.dispatchEventsForAggregate(question.id)
   }
 
   async delete(question: Question): Promise<void> {
